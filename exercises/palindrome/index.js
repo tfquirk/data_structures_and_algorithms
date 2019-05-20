@@ -29,8 +29,21 @@ function palindrome(str) {
   //
   // return str === reversed;
 
-  // alternate solution:
-  return str.split("").every((char, idx) => char === str[str.length - 1 - idx]);
+  // // alternate solution:
+  // return str.split("").every((char, idx) => char === str[str.length - 1 - idx]);
+
+  // test solution from interview:
+  // for (let i = 0; i < str.length / 2; i++) {
+  //   return str[i] !== str[str.length - 1 - i] ? false : true;
+  // }
+
+  for (let i = 0; i < str.length / 2; i++) {
+    if (str[i] !== str[str.length - 1 - i]) {
+      return false;
+    }
+  }
+
+  return true;
 }
 
 module.exports = palindrome;
