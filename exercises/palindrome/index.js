@@ -20,6 +20,7 @@ function palindrome(str) {
   // // }
   // my solution cleaner:
   // return str === reverse(str);
+
   // // suggested solution 1:
   // const reversed = str
   //   .split("")
@@ -27,6 +28,9 @@ function palindrome(str) {
   //   .join("");
   //
   // return str === reversed;
+
+  // alternate solution:
+  return str.split("").every((char, idx) => char === str[str.length - 1 - idx]);
 }
 
 module.exports = palindrome;
