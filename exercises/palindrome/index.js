@@ -12,13 +12,21 @@ function reverse(str) {
 }
 
 function palindrome(str) {
-  // if (str === reverse(str)) {
-  //   return true;
-  // } else {
-  //   return false;
-  // }
-
-  return str === reverse(str);
+  // my solution 1:
+  // // if (str === reverse(str)) {
+  // //   return true;
+  // // } else {
+  // //   return false;
+  // // }
+  // my solution cleaner:
+  // return str === reverse(str);
+  // // suggested solution 1:
+  // const reversed = str
+  //   .split("")
+  //   .reverse()
+  //   .join("");
+  //
+  // return str === reversed;
 }
 
 module.exports = palindrome;
