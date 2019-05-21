@@ -11,9 +11,9 @@ function maxChar(str) {
   let mostCommonChar = "";
   let charCount = 0;
 
-  str.split("").forEach(char => {
+  for (char of str) {
     charHash[char] ? (charHash[char] += 1) : (charHash[char] = 1);
-  });
+  }
 
   for (char in charHash) {
     if (charHash[char] > charCount) {
