@@ -25,6 +25,15 @@ function reverseInt(n) {
   //     .reverse()
   //     .join("")
   // );
+
+  // solution 1:
+  const reversed = n
+    .toString()
+    .split("")
+    .reverse()
+    .join("");
+
+  return parseInt(reversed) * Math.sign(n);
 }
 
 module.exports = reverseInt;
