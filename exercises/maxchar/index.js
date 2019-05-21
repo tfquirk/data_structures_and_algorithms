@@ -6,23 +6,46 @@
 // maxChar("apple 1231111") === "1"
 
 function maxChar(str) {
-  // my solution:
-  let charHash = {};
-  let mostCommonChar = "";
-  let charCount = 0;
+  // // my solution:
+  // let charHash = {};
+  // let mostCommonChar = "";
+  // let charCount = 0;
+  //
+  // for (char of str) {
+  //   charHash[char] ? (charHash[char] += 1) : (charHash[char] = 1);
+  // }
+  //
+  // for (char in charHash) {
+  //   if (charHash[char] > charCount) {
+  //     mostCommonChar = char;
+  //     charCount = charHash[char];
+  //   }
+  // }
+  //
+  // return mostCommonChar;
 
-  for (char of str) {
-    charHash[char] ? (charHash[char] += 1) : (charHash[char] = 1);
-  }
+  // character Map:
+  // suggested solution:
+  const charMap = {};
+  let max = 0;
+  let maxChar = "";
 
-  for (char in charHash) {
-    if (charHash[char] > charCount) {
-      mostCommonChar = char;
-      charCount = charHash[char];
+  for (let char of str) {
+    if (charMap[char]) {
+      charMap[char] += 1;
+    } else {
+      charMap[char] = 1;
     }
   }
 
-  return mostCommonChar;
+  for (let char in charMap) {
+    if (charMap[char] > max) {
+      maxChar = char;
+      max = charMap[char];
+    }
+  }
+
+  return maxChar;
 }
 
 module.exports = maxChar;
