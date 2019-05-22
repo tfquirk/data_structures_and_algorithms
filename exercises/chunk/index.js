@@ -9,25 +9,48 @@
 // chunk([1, 2, 3, 4, 5], 10) --> [[ 1, 2, 3, 4, 5]]
 
 function chunk(array, size) {
+  // // my solution:
+  // let newArray = [];
+  // let tempArray = [];
+  //
+  // for (el of array) {
+  //   if (tempArray.length === size) {
+  //     newArray.push(tempArray);
+  //     tempArray = [];
+  //     tempArray.push(el);
+  //   } else {
+  //     tempArray.push(el);
+  //   }
+  // }
+  //
+  // if (tempArray.length > 0) {
+  //   newArray.push(tempArray);
+  // }
+  //
+  // return newArray;
+
   // my solution:
   let newArray = [];
   let tempArray = [];
 
   for (el of array) {
+    tempArray.push(el);
+
     if (tempArray.length === size) {
       newArray.push(tempArray);
       tempArray = [];
-      tempArray.push(el);
-    } else {
-      tempArray.push(el);
     }
   }
 
-  if (tempArray.length > 0) {
-    newArray.push(tempArray);
-  }
+  tempArray.length > 0 && newArray.push(tempArray);
+
+  // if (tempArray.length > 0) {
+  //   newArray.push(tempArray);
+  // }
 
   return newArray;
+
+  // first suggested solution:
 }
 
 module.exports = chunk;
