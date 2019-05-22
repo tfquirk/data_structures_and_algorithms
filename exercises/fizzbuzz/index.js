@@ -13,23 +13,36 @@
 //   buzz
 
 function fizzBuzz(n) {
-  // my solution:
-  let range = [];
-  i = 1;
-  while (i <= n) {
-    range.push(i);
-    i++;
-  }
-  debugger;
-  for (num of range) {
-    if (num % 3 === 0 && num % 5 === 0) {
+  // // my solution:
+  // let range = [];
+  // i = 1;
+  // while (i <= n) {
+  //   range.push(i);
+  //   i++;
+  // }
+  // debugger;
+  // for (num of range) {
+  //   if (num % 3 === 0 && num % 5 === 0) {
+  //     console.log("fizzbuzz");
+  //   } else if (num % 3 === 0) {
+  //     console.log("fizz");
+  //   } else if (num % 5 === 0) {
+  //     console.log("buzz");
+  //   } else {
+  //     console.log(num);
+  //   }
+  // }
+
+  // suggested solution:
+  for (let i = 1; i <= n; i++) {
+    if (i % 15 === 0) {
       console.log("fizzbuzz");
-    } else if (num % 3 === 0) {
+    } else if (i % 3 === 0) {
       console.log("fizz");
-    } else if (num % 5 === 0) {
+    } else if (i % 5 === 0) {
       console.log("buzz");
     } else {
-      console.log(num);
+      console.log(i);
     }
   }
 }
