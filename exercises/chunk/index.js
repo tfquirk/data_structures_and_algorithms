@@ -28,7 +28,6 @@ function chunk(array, size) {
   // }
   //
   // return newArray;
-
   // // my solution refactored:
   // let newArray = [];
   // let tempArray = [];
@@ -46,17 +45,28 @@ function chunk(array, size) {
   //
   // return newArray;
 
-  // first suggested solution:
-  const chunked = [];
+  // // first suggested solution:
+  // const chunked = [];
+  //
+  // for (let el of array) {
+  //   const last = chunked[chunked.length - 1];
+  //
+  //   if (!last || last.length === size) {
+  //     chunked.push([el]);
+  //   } else {
+  //     last.push(el);
+  //   }
+  // }
+  //
+  // return chunked;
 
-  for (let el of array) {
-    const last = chunked[chunked.length - 1];
+  // second suggested solution:
+  let chunked = [];
+  let index = 0;
 
-    if (!last || last.length === size) {
-      chunked.push([el]);
-    } else {
-      last.push(el);
-    }
+  while (index < array.length) {
+    chunked.push(array.slice(index, index + size));
+    index += size;
   }
 
   return chunked;
