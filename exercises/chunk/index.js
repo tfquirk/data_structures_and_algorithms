@@ -29,28 +29,37 @@ function chunk(array, size) {
   //
   // return newArray;
 
-  // my solution:
-  let newArray = [];
-  let tempArray = [];
+  // // my solution refactored:
+  // let newArray = [];
+  // let tempArray = [];
+  //
+  // for (el of array) {
+  //   tempArray.push(el);
+  //
+  //   if (tempArray.length === size) {
+  //     newArray.push(tempArray);
+  //     tempArray = [];
+  //   }
+  // }
+  //
+  // tempArray.length > 0 && newArray.push(tempArray);
+  //
+  // return newArray;
 
-  for (el of array) {
-    tempArray.push(el);
+  // first suggested solution:
+  const chunked = [];
 
-    if (tempArray.length === size) {
-      newArray.push(tempArray);
-      tempArray = [];
+  for (let el of array) {
+    const last = chunked[chunked.length - 1];
+
+    if (!last || last.length === size) {
+      chunked.push([el]);
+    } else {
+      last.push(el);
     }
   }
 
-  tempArray.length > 0 && newArray.push(tempArray);
-
-  // if (tempArray.length > 0) {
-  //   newArray.push(tempArray);
-  // }
-
-  return newArray;
-
-  // first suggested solution:
+  return chunked;
 }
 
 module.exports = chunk;
