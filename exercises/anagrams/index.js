@@ -38,31 +38,43 @@ function anagrams(stringA, stringB) {
   //
   // return true;
 
-  // suggested soltuion (added helper method):
-  const aCharMap = createCharacterMap(stringA);
-  const bCharMap = createCharacterMap(stringB);
+  //   // suggested soltuion (added helper method):
+  //   const aCharMap = createCharacterMap(stringA);
+  //   const bCharMap = createCharacterMap(stringB);
+  //
+  //   if (Object.keys(aCharMap).length !== Object.keys(bCharMap).length) {
+  //     return false;
+  //   }
+  //
+  //   for (let key in aCharMap) {
+  //     if (aCharMap[key] !== bCharMap[key]) {
+  //       return false;
+  //     }
+  //   }
+  //
+  //   return true;
+  // }
+  //
+  // function createCharacterMap(str) {
+  //   const charMap = {};
+  //
+  //   for (let char of str.replace(/[^\w]/g, "").toLowerCase()) {
+  //     charMap[char] = charMap[char] + 1 || 1;
+  //   }
+  //
+  //   return charMap;
 
-  if (Object.keys(aCharMap).length !== Object.keys(bCharMap).length) {
-    return false;
-  }
-
-  for (let key in aCharMap) {
-    if (aCharMap[key] !== bCharMap[key]) {
-      return false;
-    }
-  }
-
-  return true;
+  // suggested solution 2:
+  return cleanString(stringA) === cleanString(stringB);
 }
 
-function createCharacterMap(str) {
-  const charMap = {};
-
-  for (let char of str.replace(/[^\w]/g, "").toLowerCase()) {
-    charMap[char] = charMap[char] + 1 || 1;
-  }
-
-  return charMap;
+function cleanString(str) {
+  return str
+    .replace(/[^\w]/g, "")
+    .toLowerCase()
+    .split("")
+    .sort()
+    .join("");
 }
 
 module.exports = anagrams;
