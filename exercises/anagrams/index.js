@@ -9,34 +9,60 @@
 //   anagrams('Hi there', 'Bye there') --> False
 
 function anagrams(stringA, stringB) {
-  // my solution:
-  const stringA_cleaned = stringA.replace(/[^\w]/g, "").toLowerCase();
-  const stringB_cleaned = stringB.replace(/[^\w]/g, "").toLowerCase();
+  // // my solution:
+  // const stringA_cleaned = stringA.replace(/[^\w]/g, "").toLowerCase();
+  // const stringB_cleaned = stringB.replace(/[^\w]/g, "").toLowerCase();
+  //
+  // const stringA_hash = {};
+  // const stringB_hash = {};
+  //
+  // for (let char of stringA_cleaned) {
+  //   stringA_hash[char] ? (stringA_hash[char] += 1) : (stringA_hash[char] = 1);
+  // }
+  //
+  // for (let char of stringB_cleaned) {
+  //   stringB_hash[char] ? (stringB_hash[char] += 1) : (stringB_hash[char] = 1);
+  // }
+  //
+  // for (let key in stringA_hash) {
+  //   if (stringA_hash[key] !== stringB_hash[key]) {
+  //     return false;
+  //   }
+  // }
+  //
+  // for (let key in stringB_hash) {
+  //   if (stringA_hash[key] !== stringB_hash[key]) {
+  //     return false;
+  //   }
+  // }
+  //
+  // return true;
 
-  const stringA_hash = {};
-  const stringB_hash = {};
+  // suggested soltuion (added helper method):
+  const aCharMap = createCharacterMap(stringA);
+  const bCharMap = createCharacterMap(stringB);
 
-  for (let char of stringA_cleaned) {
-    stringA_hash[char] ? (stringA_hash[char] += 1) : (stringA_hash[char] = 1);
+  if (Object.keys(aCharMap).length !== Object.keys(bCharMap).length) {
+    return false;
   }
 
-  for (let char of stringB_cleaned) {
-    stringB_hash[char] ? (stringB_hash[char] += 1) : (stringB_hash[char] = 1);
-  }
-
-  for (let key in stringA_hash) {
-    if (stringA_hash[key] !== stringB_hash[key]) {
-      return false;
-    }
-  }
-
-  for (let key in stringB_hash) {
-    if (stringA_hash[key] !== stringB_hash[key]) {
+  for (let key in aCharMap) {
+    if (aCharMap[key] !== bCharMap[key]) {
       return false;
     }
   }
 
   return true;
+}
+
+function createCharacterMap(str) {
+  const charMap = {};
+
+  for (let char of str.replace(/[^\w]/g, "").toLowerCase()) {
+    charMap[char] = charMap[char] + 1 || 1;
+  }
+
+  return charMap;
 }
 
 module.exports = anagrams;
