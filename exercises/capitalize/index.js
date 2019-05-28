@@ -8,15 +8,37 @@
 //   capitalize('look, it is working!') --> 'Look, It Is Working!'
 
 function capitalize(str) {
-  // my solution:
-  const words = str.split(" ");
-  const capitalizedWords = [];
+  // // my solution:
+  // const words = str.split(" ");
+  // const capitalizedWords = [];
+  //
+  // words.forEach(word => {
+  //   capitalizedWords.push(word[0].toUpperCase() + word.slice(1));
+  // });
+  //
+  // return capitalizedWords.join(" ");
 
-  words.forEach(word => {
-    capitalizedWords.push(word[0].toUpperCase() + word.slice(1));
-  });
+  // // suggested solution 1:
+  // const words = [];
+  //
+  // for (let word of str.split(" ")) {
+  //   words.push(word[0].toUpperCase() + word.slice(1));
+  // }
+  //
+  // return words.join(" ");
 
-  return capitalizedWords.join(" ");
+  //suggested solution 2:
+  let capitalized = "";
+
+  for (var i = 0; i < str.length; i++) {
+    if (i === 0 || str[i - 1] === " ") {
+      capitalized = capitalized + str[i].toUpperCase();
+    } else {
+      capitalized = capitalized + str[i];
+    }
+  }
+
+  return capitalized;
 }
 
 module.exports = capitalize;
