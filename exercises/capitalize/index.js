@@ -30,7 +30,7 @@ function capitalize(str) {
   //suggested solution 2:
   let capitalized = "";
 
-  for (var i = 0; i < str.length; i++) {
+  for (let i = 0; i < str.length; i++) {
     if (i === 0 || str[i - 1] === " ") {
       capitalized = capitalized + str[i].toUpperCase();
     } else {
