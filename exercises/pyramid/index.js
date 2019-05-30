@@ -14,6 +14,22 @@
 //       ' ### '
 //       '#####'
 
-function pyramid(n) {}
+function pyramid(n) {
+  // my solution:
+  let spaces = n - 1;
+  let bricks = 1;
+
+  for (let i = 1; i <= n; i++) {
+    let level = " ".repeat(spaces) + "#".repeat(bricks) + " ".repeat(spaces);
+
+    if (i < n) {
+      console.log(level);
+      spaces -= 1;
+      bricks += 2;
+    } else {
+      console.log("#".repeat(bricks));
+    }
+  }
+}
 
 module.exports = pyramid;
