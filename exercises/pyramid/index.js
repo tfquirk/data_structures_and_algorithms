@@ -14,23 +14,16 @@
 //       ' ### '
 //       '#####'
 
-function pyramid(n) {
-  //suggested soltion 1:
-  const midpoint = Math.floor((2 * n - 1) / 2);
-
-  for (let row = 0; row < n; row++) {
-    let level = "";
-
-    for (let column = 0; column < 2 * n - 1; column++) {
-      if (midpoint - row <= column && midpoint + row >= column) {
-        level += "#";
-      } else {
-        level += " ";
-      }
-    }
-
-    console.log(level);
+function pyramid(n, spaces = n - 1, bricks = 1) {
+  // my recursive solution:
+  if (n === 1) {
+    return console.log("#".repeat(bricks));
   }
+
+  let level = " ".repeat(spaces) + "#".repeat(bricks) + " ".repeat(spaces);
+  console.log(level);
+
+  pyramid(n - 1, spaces - 1, bricks + 2);
 }
 
 module.exports = pyramid;
@@ -51,11 +44,19 @@ module.exports = pyramid;
 //   }
 // }
 
-// if (bricks === n) {
-//   return console.log("#".repeat(bricks));
+// //suggested soltion 1:
+// const midpoint = Math.floor((2 * n - 1) / 2);
+//
+// for (let row = 0; row < n; row++) {
+//   let level = "";
+//
+//   for (let column = 0; column < 2 * n - 1; column++) {
+//     if (midpoint - row <= column && midpoint + row >= column) {
+//       level += "#";
+//     } else {
+//       level += " ";
+//     }
+//   }
+//
+//   console.log(level);
 // }
-//
-// let level = " ".repeat(spaces) + "#".repeat(bricks) + " ".repeat(spaces);
-// console.log(level);
-//
-// pyramid(n, spaces - 1, bricks + 2);
