@@ -14,19 +14,40 @@
 //       ' ### '
 //       '#####'
 
-function pyramid(n, spaces = n - 1, bricks = 1) {
-  // my recursive solution:
-  if (n === 1) {
-    return console.log("#".repeat(bricks));
+function pyramid(n, row = 0, level = "") {
+  // suggested recursive solution:
+  if (row === n) {
+    return;
   }
 
-  let level = " ".repeat(spaces) + "#".repeat(bricks) + " ".repeat(spaces);
-  console.log(level);
+  if (level.length === 2 * n - 1) {
+    console.log(level);
+    return pyramid(n, row + 1);
+  }
 
-  pyramid(n - 1, spaces - 1, bricks + 2);
+  const midpoint = Math.floor((2 * n - 1) / 2);
+  let add;
+
+  if (midpoint - row <= level.length && midpoint + row >= level.length) {
+    add = "#";
+  } else {
+    add = " ";
+  }
+
+  pyramid(n, row, level + add);
 }
 
 module.exports = pyramid;
+
+// // my recursive solution:
+// if (n === 1) {
+//   return console.log("#".repeat(bricks));
+// }
+//
+// let level = " ".repeat(spaces) + "#".repeat(bricks) + " ".repeat(spaces);
+// console.log(level);
+//
+// pyramid(n - 1, spaces - 1, bricks + 2);
 
 // // my solution:
 // let spaces = n - 1;
