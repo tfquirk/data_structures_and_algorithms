@@ -40,6 +40,7 @@ function pyramid(n, row = 0, level = "") {
 module.exports = pyramid;
 
 // // my recursive solution:
+// pyramid(n, spaces= n-1, bricks=1) {
 // if (n === 1) {
 //   return console.log("#".repeat(bricks));
 // }
@@ -48,6 +49,7 @@ module.exports = pyramid;
 // console.log(level);
 //
 // pyramid(n - 1, spaces - 1, bricks + 2);
+// }
 
 // // my solution:
 // let spaces = n - 1;
