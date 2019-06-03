@@ -15,6 +15,36 @@
 //     [11, 16, 15, 6],
 //     [10,  9,  8, 7]]
 
-function matrix(n) {}
+function matrix(n) {
+  // solved for 2x2 only:
+  const matrixArray = [];
+
+  for (var i = 0; i < n; i++) {
+    matrixArray[i] = new Array(n);
+  }
+
+  let counter = 1;
+  // let [row, column] = [matrixArray.length, matrixArray.length]
+
+  for (let row = 0; row < matrixArray.length; row++) {
+    for (let column = 0; column < matrixArray.length; column++) {
+      if (row === 0) {
+        matrixArray[row][column] = counter;
+        counter++;
+      }
+    }
+  }
+
+  for (let row = matrixArray.length - 1; row >= 0; row--) {
+    for (let column = matrixArray.length - 1; column >= 0; column--) {
+      if (row === matrixArray.length - 1) {
+        matrixArray[row][column] = counter;
+        counter++;
+      }
+    }
+  }
+
+  return matrixArray;
+}
 
 module.exports = matrix;
