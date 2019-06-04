@@ -36,6 +36,12 @@ function matrix(n) {
       counter++;
     }
     startRow++;
+
+    // end column logic:
+    for (let i = startRow; i <= endRow; i++) {
+      results[i][endCol] = counter;
+      counter++;
+    }
   }
 }
 
