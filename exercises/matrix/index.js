@@ -45,13 +45,22 @@ function matrix(n) {
 
     endCol--;
 
-    //bottom row logic:
+    // bottom row logic:
     for (let i = endCol; i >= startCol; i--) {
       results[endRow][i] = counter;
       counter++;
     }
     endRow--;
+
+    // start column logic:
+    for (let i = endRow; i >= startRow; i--) {
+      results[i][startCol] = counter;
+      counter++;
+    }
+    startCol++;
   }
+
+  return results;
 }
 
 module.exports = matrix;
